@@ -1,4 +1,5 @@
 import React ,{useState} from 'react'
+import {Link } from 'react-router-dom';
 import { Form, Button,Row,Col } from "react-bootstrap";
 
 
@@ -8,8 +9,11 @@ export const Register = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
 
-async function singnUp()
+
+
+async function signUp(e)
 {
+  e.preventDefault();
   let item= {name,email,password}
   
  let result = await fetch("http://localhost:4000/admin/register",{
@@ -23,7 +27,9 @@ async function singnUp()
     
 })
 result =await result.json()
-console.warn(result)
+localStorage.setItem("user-info",JSON.stringify(result))
+
+
 }
 
   return (
@@ -45,8 +51,8 @@ console.warn(result)
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" value={password}  onChange={(e)=>setPassword(e.target.value)} />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={singnUp}>
-          Submit
+        <Button  style={{color:"white"}} variant="light" type="submit" onClick={signUp}>
+        <Link to="/login">Submit</Link>
         </Button>
       </Form></Col>
      

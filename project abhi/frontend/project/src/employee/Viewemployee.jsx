@@ -30,7 +30,7 @@ export const Viewemployee = () => {
   }
 
   function deleteData(emp_id) {
-    fetch(`http://localhost:4000/deleteemp${emp_id}`, {
+    fetch(`http://localhost:4000/deleteemp/${emp_id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -133,9 +133,10 @@ export const Viewemployee = () => {
         to="/addemp"
         style={{
           textDecoration: "none",
-          color: "green",
+          color: "black",
           fontWeight: "bolder",
-          marginTop: "15px",
+        
+          
         }}
       >
         Add Employee
